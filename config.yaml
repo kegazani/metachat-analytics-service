@@ -1,0 +1,24 @@
+service:
+  name: "analytics-service"
+  log_level: "INFO"
+  
+server:
+  http_port: 8002
+  http_host: "0.0.0.0"
+  grpc_port: 50057
+
+database:
+  url: "postgresql+asyncpg://postgres:postgres@127.0.0.1:5432/metachat_analytics"
+  pool_size: 10
+  max_overflow: 20
+
+kafka:
+  brokers:
+    - "127.0.0.1:9092"
+  consumer_group: "analytics-service"
+  topics:
+    mood_analyzed: "metachat.mood.analyzed"
+    diary_entry_created: "metachat.diary.entry.created"
+    diary_entry_deleted: "metachat.diary.entry.deleted"
+    archetype_updated: "metachat.archetype.updated"
+

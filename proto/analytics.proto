@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package analytics;
+
+import "google/protobuf/timestamp.proto";
+
+option py_package = "metachat.analytics.proto";
+
+message GetUserStatisticsRequest {
+  string user_id = 1;
+}
+
+message GetUserStatisticsResponse {
+  int32 total_diary_entries = 1;
+  int32 total_mood_analyses = 2;
+  int32 total_tokens = 3;
+  string dominant_emotion = 4;
+  repeated string top_topics = 5;
+  google.protobuf.Timestamp profile_created_at = 6;
+  google.protobuf.Timestamp last_personality_update = 7;
+}
+
+service AnalyticsService {
+  rpc GetUserStatistics(GetUserStatisticsRequest) returns (GetUserStatisticsResponse);
+}
+

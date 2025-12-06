@@ -3,7 +3,7 @@ from typing import List, Optional
 from datetime import date, datetime
 from pydantic import BaseModel
 
-from src.api.app import app_state
+from src.api.state import app_state
 
 router = APIRouter()
 
